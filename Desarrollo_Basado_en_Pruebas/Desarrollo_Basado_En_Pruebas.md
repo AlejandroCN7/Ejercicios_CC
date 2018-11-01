@@ -36,7 +36,7 @@ Podemos comprobar que nos encontramos dentro del entorno porque en el prompt de 
 
  ![figura4](figuras/figura4.png)
 
- El siguiente paso es conectar Python con MongoDb, para ello hacemo uso de [pymongo](https://api.mongodb.com/python/current/):
+ El siguiente paso es conectar Python con MongoDb, para ello hacemos uso de [pymongo](https://api.mongodb.com/python/current/):
 
  `(env) > pip install pymongo`
 
