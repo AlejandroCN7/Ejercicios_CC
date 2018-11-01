@@ -49,3 +49,36 @@ Podemos comprobar que nos encontramos dentro del entorno porque en el prompt de 
  Una vez instalado y teniendo disponible este servicio he probado un ejemplo sacado de [este tutorial](https://jarroba.com/python-mongodb-driver-pymongo-con-ejemplos/). He modificado el código para que resulte más vistoso y he entendido como funciona MongoDb con Python, lo cual considero un objetivo muy valioso. Podemos ver parte de la ejecución de todo lo que he probado en el código de [prueba.py](https://github.com/AlejandroCN7/Ejercicios_CC/tree/master/Desarrollo_Basado_en_Pruebas/prueba.py) en la siguiente imagen:
 
  ![figura3](figuras/figura3.png)
+
+ ---
+
+###Ejercicio 3: Crear una descripción del módulo usando package.json. En caso de que se trate de otro lenguaje, usar el método correspondiente.
+
+Aquí cabe destacar que es posible generar ficheros txt con los paquetes que queramos en su interior a modo de lista. De esta forma es posible instalarlos en otro entorno de forma sencilla, por lo que podemos configurara nuestros propios conjuntos de paquetes para montar entornos de desarrollo específicos en cualquier lugar de forma rápida.
+
+`(env) > pip freeze > paquetes.txt`
+`(env2) > pip install -r paquetes.txt`
+
+Creo que esto es suficientemente útil para preparar cualquier entorno de forma sencilla y rápida.
+
+![figura5](figuras/figura5.png)
+
+---
+
+###Ejericicio 4: Descargar el repositorio de ejemplo anterior, instalar las herramientas necesarias (principalmente Scala y sbt) y ejecutar el ejemplo desde sbt. Alternativamente, buscar otros marcos para REST en Scala tales como Finatra o Scalatra y probar los ejemplos que se incluyan en el repositorio.
+
+---
+
+###Ejercicio 5: Para la aplicación que se está haciendo, escribir una serie de aserciones y probar que efectivamente no fallan. Añadir tests para una nueva funcionalidad, probar que falla y escribir el código para que no lo haga (vamos, lo que viene siendo TDD).
+
+Como nosotros estamos desarrollando desde Python, vamos a ayudarnos de [doctest](https://docs.python.org/2/library/doctest.html) para la creación de estos test. Vamos a crearnos otro código python de prueba llamado [prueba2.py](https://github.com/AlejandroCN7/Ejercicios_CC/tree/master/Desarrollo_Basado_en_Pruebas/prueba2.py) en el que he implementado una operación tan sencilla como una simple suma.
+
+El siguiente paso es comprobar que funciona el test que hemos especificado en la implementación del mismo. Para ello ejecutamos:
+
+`> python3 prueba2.py -v`
+
+-v para activar verbose y obtener todos los detalles del test. Como podemos apreciar en la siguiente imagen, creé un caso de prueba en el que el resultado que espera el test, es incorrecto, no la salida del propio programa. Aunque lo normal es que sea al revés, nos servirá para comprobar el funcionamiento del mismo:
+
+![figura6](figuras/figura6.png)
+
+---
