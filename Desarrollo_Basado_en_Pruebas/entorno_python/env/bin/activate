@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/hapneck/Escritorio/Universidad/CC/proyectos/Ejercicios_CC/Ejercicios/entorno_python/env"
+VIRTUAL_ENV="/home/hapneck/Escritorio/Universidad/CC/proyectos/Ejercicios_CC/Desarrollo_Basado_en_Pruebas/entorno_python/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

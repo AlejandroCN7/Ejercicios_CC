@@ -10,7 +10,7 @@ Hecho. He decido instalar virtualenv para Python. De esta forma tengo la posibil
 
 ### Ejercicio 2: Ejecutar un programa básico que trabaje con una base de datos en diferentes versiones del lenguaje. ¿Funciona en todas ellas?
 
-Voy a crear en entorno con virtualenv que utilice la base de datos MySQL. El primer paso, obviamente, es instalar el entorno virtual, especificando como ruta el directorio de este repositorio localmente en mi computador:
+Voy a crear en entorno con virtualenv que utilice la base de datos MongoDB. El primer paso, obviamente, es instalar el entorno virtual, especificando como ruta el directorio de este repositorio localmente en mi computador:
 
 `> virtualenv ./entorno_python/env`
 
@@ -32,8 +32,20 @@ Podemos comprobar que nos encontramos dentro del entorno porque en el prompt de 
 
  Podemos encontrar más información sobre este proceso en el [siguiente enlace](https://osl.ugr.es/2016/10/17/entornos-virtuales-en-python-con-virtualenv/).
 
- Ahora mi intención es crear una base de datos MongoDB y asociarla a este entorno virtual que acabamos de crear. Para ello he seguido este [enlace](http://gpd.sip.ucm.es/rafa/docencia/nosql/MongoyPython.html#Instalaci%C3%B3n).
+ Se ha realizado la instalación de [MongoDb en Ubuntu 18.04 LTS](https://www.digitalocean.com/community/tutorials/como-instalar-mongodb-en-ubuntu-16-04-es). Podemos comprobar que el proceso se ha realizado con éxito en la siguiente imagen:
 
- Para ello tenemos que instalar pymongo en nuestro entorno virtual. Estando dentro del mismo:
+ ![figura4](figuras/figura4.png)
 
- `(env) >`
+ El siguiente paso es conectar Python con MongoDb, para ello hacemo uso de [pymongo](https://api.mongodb.com/python/current/):
+
+ `(env) > pip install pymongo`
+
+ En este punto, probé a crearme otro entorno virtual a ver si contenía los mismos paquetes o no, obteniendo el siguiente resultado:
+
+ ![figura2](figuras/figura2.png)
+
+ Como se puede apreciar, en el segundo entorno que hemos creado no contiene paquetes instalados, mientras que en el primer entorno tenemos todos los paquetes que necesitamos.
+
+ Una vez instalado y teniendo disponible este servicio he probado un ejemplo sacado de [este tutorial](https://jarroba.com/python-mongodb-driver-pymongo-con-ejemplos/). He modificado el código para que resulte más vistoso y he entendido como funciona MongoDb con Python, lo cual considero un objetivo muy valioso. Podemos ver parte de la ejecución de todo lo que he probado en el código de [prueba.py](https://github.com/AlejandroCN7/Ejercicios_CC/tree/master/Desarrollo_Basado_en_Pruebas/prueba.py) en la siguiente imagen:
+
+ ![figura3](figuras/figura3.png)

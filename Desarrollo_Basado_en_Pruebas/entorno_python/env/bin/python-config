@@ -1,4 +1,4 @@
-#!/home/hapneck/Escritorio/Universidad/CC/proyectos/Ejercicios_CC/Ejercicios/entorno_python/env/bin/python
+#!/home/hapneck/Escritorio/Universidad/CC/proyectos/Ejercicios_CC/Desarrollo_Basado_en_Pruebas/entorno_python/env/bin/python
 
 import sys
 import getopt

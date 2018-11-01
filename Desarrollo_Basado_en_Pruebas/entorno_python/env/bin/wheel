@@ -1,5 +1,6 @@
-#!/home/hapneck/Escritorio/Universidad/CC/proyectos/Ejercicios_CC/Ejercicios/entorno_python/env/bin/python3.6
-
+#!/bin/sh
+'''exec' /home/hapneck/Escritorio/Universidad/CC/proyectos/Ejercicios_CC/Desarrollo_Basado_en_Pruebas/entorno_python/env/bin/python3.6 "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys
