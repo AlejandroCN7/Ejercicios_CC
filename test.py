@@ -12,7 +12,7 @@ class TestModel(unittest.TestCase):
     def testUnicidad(self):
         prueba = Jugador("Ejemplo", "Alberto", "Soriano Martinez", 150, ["juego1", "juego2", "juego3"], True)
         prueba2 = Jugador("Ejemplo", "Alberto", "Soriano Martinez", 150, ["juego1", "juego2", "juego3"], True)
-        self.assertIsNot(prueba,prueba2,"Dos objetos con los mismos atributos no pueden ser el mismo.")
+        self.assertIs(prueba,prueba2,"Dos objetos con los mismos atributos no pueden ser el mismo.")
 
     def testCambioNick(self):
         prueba = Jugador("Ejemplo", "Alberto", "Soriano Martinez", 150, ["juego1", "juego2", "juego3"], True)

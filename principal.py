@@ -3,7 +3,7 @@ from flask_restful import Resource, Api, abort
 from model import Jugador
 import json
 
-app = Flask("hito2")
+app = Flask("app")
 api = Api(app)
 
 #@app.route("/")
