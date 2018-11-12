@@ -1,7 +1,8 @@
 from flask import Flask, request
 from flask_restful import Resource, Api, abort
 from model import Jugador
-import json
+
+import os
 
 app = Flask("app")
 api = Api(app)
@@ -63,4 +64,6 @@ api.add_resource(Jugadores,'/jugadores')
 api.add_resource(JugadorIndividual,'/jugadores/<string:ruta>')
 
 if (__name__ == '__main__'):
-    app.run(debug=True)
+    # Esto es para que pueda abrirse desde cualquier puerto y direccion(de esta forma en heroku no nos da error).
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
