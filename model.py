@@ -19,7 +19,7 @@ class Jugador:
 
         return d
 
-    def set(self,nick):
+    def setNick(self,nick):
         self.nick=nick
 
     def aniadirVideojuego(self,juego):
@@ -31,5 +31,6 @@ class Jugador:
 
 prueba = Jugador("Ejemplo","Alberto","Soriano Martinez",150,["juego1","juego2","juego3"],True)
 
-print(type(prueba))
+print(type(prueba.videojuegos[0]))
+
 
