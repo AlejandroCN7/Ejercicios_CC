@@ -7,7 +7,7 @@ class TestModel(unittest.TestCase):
 
     def testTipoCreacion(self):
         prueba = Jugador("Ejemplo","Alberto","Soriano Martinez",150,["juego1","juego2","juego3"],True)
-        self.assertEqual(type(prueba),"<class '__main__.Jugador'>","Tipo de objeto jugador incorrecto.")
+        self.assertIsInstance(prueba,Jugador,"Tipo de objeto jugador incorrecto.")
 
     def testUnicidad(self):
         prueba = Jugador("Ejemplo", "Alberto", "Soriano Martinez", 150, ["juego1", "juego2", "juego3"], True)
@@ -17,7 +17,7 @@ class TestModel(unittest.TestCase):
     def testCambioNick(self):
         prueba = Jugador("Ejemplo", "Alberto", "Soriano Martinez", 150, ["juego1", "juego2", "juego3"], True)
         prueba.setNick("nuevoNick")
-        self.assertisInstance(prueba.getNick(),str,"El tipo del campo nick no es correcto al cambiarlo")
+        self.assertIsInstance(prueba.nick,str,"El tipo del campo nick no es correcto al cambiarlo")
         self.assertEqual(prueba.nick,"nuevoNick","El atrubuto Nick no se ha modificado correctamente.")
 
     def testInsertar(self):
@@ -33,7 +33,3 @@ class TestModel(unittest.TestCase):
         prueba.eliminarVideojuego("juego2")
         self.assertNotIn("juego2",prueba.videojuegos,"Los videojuegos especificados no se eliminan bien del jugador.")
 
-class TestServicioWeb(unittest.TestCase):
-
-    def testCabeceraRaiz:
-        subprocess("curl localhost:5000/ -i")

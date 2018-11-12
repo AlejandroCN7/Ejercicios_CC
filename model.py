@@ -23,14 +23,11 @@ class Jugador:
         self.nick=nick
 
     def aniadirVideojuego(self,juego):
-        videojuegos.add(juego)
+        self.videojuegos.append(juego)
 
     def eliminarVideojuego(self,juego):
         if(juego in self.videojuegos):
-            videojuegos.remove(juego)
+            self.videojuegos.remove(juego)
 
-prueba = Jugador("Ejemplo","Alberto","Soriano Martinez",150,["juego1","juego2","juego3"],True)
-
-print(type(prueba.videojuegos[0]))
 
 
