@@ -4,7 +4,7 @@ from model import Jugador
 
 import os
 
-app = Flask("app")
+app = Flask("hito2")
 api = Api(app)
 
 #@app.route("/")
