@@ -1,1 +1,1 @@
-web: gunicorn principal:hito2
+web: gunicorn principal:app
