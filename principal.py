@@ -56,8 +56,8 @@ class JugadorIndividual(Resource):
         return recursos[ruta]
 
     def delete(self,ruta):
-        abortar_ruta_inexistente(ruta)
-        del recursos[ruta]
+        if(ruta in recursos.keys()):
+            del recursos[ruta]
         return '',204
 
 class Jugadores(Resource):

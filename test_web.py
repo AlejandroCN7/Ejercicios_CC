@@ -112,6 +112,10 @@ class TestModel(unittest.TestCase):
         self.assertEqual(respuesta.status_code, 404, "El recurso jugador4 no debería poder encontrarse.")
         self.assertEqual(respuesta.headers['content-type'], 'application/json', "Tipo MIME de la cabecera no es JSON.")
 
+        respuesta = self.app.delete('/jugadores/jugador76')
+        self.assertEqual(respuesta.status_code, 204, "Ha habido algún error en el borrado de una ruta que no existe.")
+        self.assertEqual(respuesta.headers['content-type'], 'application/json', "Tipo MIME de la cabecera no es JSON.")
+
     def test8PutJugador(self):
 
         respuesta = self.app.put("/jugadores/jugador4",data=Jugador("EjemploPut", "Alberto", "Soriano Martinez", 15, ["juego1", "juego2", "juego3"], True).__dict__())
