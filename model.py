@@ -12,7 +12,7 @@ class Jugador:
             "Nick": self.nick,
             "Nombre": self.nombre,
             "Apellidos": self.apellidos,
-            "edad": self.edad,
+            "Edad": self.edad,
             "Videojuegos": self.videojuegos,
             "Competitivo": self.competitivo
         }
