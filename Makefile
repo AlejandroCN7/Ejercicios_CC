@@ -1,3 +1,3 @@
 
 test:
-	 python test.py
+	 python test_model.py && python test_web.py
