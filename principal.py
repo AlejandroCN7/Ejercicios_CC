@@ -40,18 +40,20 @@ def abortar_ruta_inexistente(ruta):
 class Principal(Resource):
 
     def get(self):
-        return jsonify({'status':'OK'})
+        return {'status':'OK'}
 
 class JugadorIndividual(Resource):
 
     def get(self,ruta):
         abortar_ruta_inexistente(ruta)
-        return jsonify({ruta:recursos[ruta]})
+        return {ruta:recursos[ruta]}
 
     def put(self,ruta):
-        jugador = Jugador(request.form['Nick'],request.form['Nombre'],request.form['Apellidos'],request.form['Edad'],request.form['Videojuegos'],request.form['Competitivo'])
+        args = parser.parse_args()
+        jugador = Jugador(args['Nick'], args['Nombre'], args['Apellidos'], args['Edad'],
+                          args['Videojuegos'], args['Competitivo'])
         recursos[ruta]=jugador.__dict__()
-        return jsonify(recursos[ruta])
+        return recursos[ruta]
 
     def delete(self,ruta):
         abortar_ruta_inexistente(ruta)
@@ -61,7 +63,7 @@ class JugadorIndividual(Resource):
 class Jugadores(Resource):
 
     def get(self):
-        return jsonify(recursos)
+        return recursos
 
     def post(self):
         args = parser.parse_args()
