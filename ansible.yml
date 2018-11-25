@@ -1,0 +1,8 @@
+--- # Indicamos que es un documento
+- hosts: all #Indicamos que va a empezar un array con el guión. Indicamos que el hosts es para todas las maquinas virtuales que encuentre ansible.
+  become: yes #Sirve para indicar si vamos a necesitar privilegios de superusuario.
+  roles:
+    - roles/ansible-pyenv
+  tasks: # El valor de la clave tareas va a ser un array donde vamos a poner una orden detras de otra e indicamos cual va a ser su provisionamiento.
+    - name: Instala git # En realidad lo que ocurre es que comprueba si está instalado, en caso de no estarlo lo hace (alcanza el estado present si no lo esta).
+      apt: pkg=git state=present
