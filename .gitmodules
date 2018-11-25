@@ -1,3 +1,9 @@
 [submodule "roles/ansible-pyenv"]
 	path = roles/ansible-pyenv
 	url = https://github.com/markosamuli/ansible-pyenv
+[submodule "roles/python-pyenv-role"]
+	path = roles/python-pyenv-role
+	url = https://github.com/qianka/python-pyenv-role
+[submodule "roles/ubuntu-common-role"]
+	path = roles/ubuntu-common-role
+	url = https://github.com/qianka/ubuntu-common-role

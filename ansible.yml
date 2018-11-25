@@ -2,7 +2,14 @@
 - hosts: all #Indicamos que va a empezar un array con el guión. Indicamos que el hosts es para todas las maquinas virtuales que encuentre ansible.
   become: yes #Sirve para indicar si vamos a necesitar privilegios de superusuario.
   roles:
-    - roles/ansible-pyenv
+    - role: roles/python-pyenv-role
+      python_version: 3.6.6
+      python_source_url: http://mirrors.sohu.com/python/3.6.6/
+      python_source_file: Python-3.6.6.tgz
+      python_source_checksum: 50533f1525ead0f62256c275a6ffc4bccfc625e47285eeec540c256765fd31b2 
+    - role: qianka.ubuntu-common
+
+
   tasks: # El valor de la clave tareas va a ser un array donde vamos a poner una orden detras de otra e indicamos cual va a ser su provisionamiento.
     - name: Instala git # En realidad lo que ocurre es que comprueba si está instalado, en caso de no estarlo lo hace (alcanza el estado present si no lo esta).
       apt: pkg=git state=present
