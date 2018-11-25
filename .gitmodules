@@ -1,0 +1,3 @@
+[submodule "ansible-pyenv"]
+	path = ansible-pyenv
+	url = https://github.com/markosamuli/ansible-pyenv
