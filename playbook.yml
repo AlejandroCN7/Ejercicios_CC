@@ -1,5 +1,5 @@
 ---
-  - hosts: all
+  - hosts: Debian9
     become: yes
     pre_tasks:
       - name: Instala git
@@ -19,9 +19,9 @@
         git:
           repo: 'https://github.com/AlejandroCN7/Ejercicios_CC.git'
           clone: yes
-          dest: /home/vagrant/proyecto
+          dest: /home/Alejandro/proyecto
 
       - name: Instalando dependencias del proyecto
         pip:
-          requirements: /home/vagrant/proyecto/requirements.txt
+          requirements: /home/Alejandro/proyecto/requirements.txt
           executable: pip3
