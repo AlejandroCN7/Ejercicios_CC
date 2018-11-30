@@ -1,14 +1,17 @@
+#!/usr/bin/python
+# -*- coding: ascii -*-
 from flask import Flask
 from flask_restful import Resource, Api, abort, reqparse
 from model import Jugador
 
 import os
 
+
 app = Flask("hito2")
 api = Api(app)
 
 
-# Esto sería con flask sin el microframework de RestFul
+# Esto ser?a con flask sin el microframework de RestFul
 #@app.route("/")
 
 #def hello():
@@ -25,7 +28,7 @@ recursos = {"jugador1":j1.__dict__(),
             }
 
 parser = reqparse.RequestParser()
-parser.add_argument('Nick', type=str, help='El nick debe ser único',required = True)
+parser.add_argument('Nick', type=str, help='El nick debe ser ?nico',required = True)
 parser.add_argument('Nombre', type=str, required = True)
 parser.add_argument('Apellidos', type=str, required = True)
 parser.add_argument('Edad', type=int, required = True)
@@ -79,6 +82,6 @@ api.add_resource(JugadorIndividual,'/jugadores/<string:ruta>')
 
 if (__name__ == '__main__'):
     # Esto es para que pueda abrirse desde cualquier puerto y direccion(de esta forma en heroku no nos da error).
-    port = int(os.environ.get("PORT", 80))
+    port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port,debug=True)
     #app.run(debug=True)
