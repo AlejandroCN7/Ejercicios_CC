@@ -30,4 +30,3 @@ class Jugador:
             self.videojuegos.remove(juego)
 
 
-

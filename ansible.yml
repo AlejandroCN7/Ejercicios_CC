@@ -1,6 +1,0 @@
---- # Indicamos que es un documento
-- hosts: all #Indicamos que va a empezar un array con el guión. Indicamos que el hosts es para todas las maquinas virtuales que encuentre ansible.
-  become: yes #Sirve para indicar si vamos a necesitar privilegios de superusuario.
-  tasks:
-    - name: "Establecer versión 3.6 de Python"
-      command: virtualenv /vagrant/home/venvs/myenv -p python3.6.6 creates="/vagrant/home/venvs/myenv"
