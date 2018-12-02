@@ -17,7 +17,7 @@ api = Api(app)
 #def hello():
     #return "Hola Mundo !! :)
 
-j1 = Jugador("Hapneck","Alejandro","Campoy Nieves",22,["Fortnite","Hollow Knight","The Witcher"],None)
+j1 = Jugador("Hapneck","Alejandro","Campoy Nieves",22,["Fortnite","Hollow Knight","The Witcher"],True)
 j2 = Jugador("Malcaide","Alfonso","Barragan Lara",22,["Counter Strike"],True)
 j3 = Jugador("Rekkles","Juan","Martinez Casado",22,["Fortnite","League of Legends","Counter Strike"],False)
 
@@ -41,7 +41,7 @@ parser.add_argument('Nombre', type=str, required = True)
 parser.add_argument('Apellidos', type=str, required = True)
 parser.add_argument('Edad', type=int, required = True)
 parser.add_argument('Videojuegos', required = True, action="append")
-parser.add_argument('Competitivo', type=bool, required = True)
+parser.add_argument('Competitivo', type=str, required = True)
 
 
 def abortar_ruta_inexistente(ruta):
@@ -86,6 +86,10 @@ class Jugadores(Resource):
         ruta = args['Nick']
         mongo.insertJugador(jugador)
         return mongo.getJugador(ruta),201
+
+    def delete(self):
+        mongo.removeJugadores()
+        return '',204
 
 api.add_resource(Principal,'/','/principal')
 api.add_resource(Jugadores,'/jugadores')

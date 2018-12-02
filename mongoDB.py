@@ -1,5 +1,4 @@
 import pymongo
-from model import Jugador
 
 class BaseDatos:
     def __init__(self,direccion):
