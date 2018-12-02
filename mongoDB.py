@@ -24,14 +24,17 @@ class BaseDatos:
 
     def insertJugador(self,jugador):
         entrada = jugador.__dict__()
-        if(not(self.jugadores.find_one({"Nick":entrada['Nick']}))):
+        if(self.jugadores.find_one({"Nick":entrada['Nick']})):
+            return False
+        else:
             self.jugadores.insert_one(entrada)
+            return True
 
     def updateJugador(self, jugador_nick, updates):
         try:
             jugador = self.getJugador(jugador_nick)
             self.jugadores.update_one({'Nick': jugador['Nick']}, {'$set': updates}, upsert=False)
-        except NoEncontrado:
+        except:
             print("Oops!! Se pretende actualizar una entrada inexistente.")
 
     def removeJugador(self,jugador_nick):
@@ -49,6 +52,5 @@ class BaseDatos:
 
     def getSize(self):
         return self.jugadores.count_documents({})
-
 
 

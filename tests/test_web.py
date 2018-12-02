@@ -1,3 +1,6 @@
+import sys
+sys.path.append("../")
+
 import unittest
 from model import Jugador
 from principal import *
@@ -50,9 +53,9 @@ class TestModel(unittest.TestCase):
         self.assertEqual(respuesta.headers['content-type'], 'application/json', "Tipo MIME de la cabecera no es JSON.")
         contenido = obtenerContenidoPaquete(respuesta)
         jugadores = contenido.keys()
-        self.assertIn('jugador1',jugadores,"El jugador 1 no se encuentra disponible.")
-        self.assertIn('jugador2', jugadores, "El jugador 2 no se encuentra disponible.")
-        self.assertIn('jugador3', jugadores, "El jugador 3 no se encuentra disponible.")
+        self.assertIn('Hapneck',jugadores,"El jugador 1 no se encuentra disponible.")
+        self.assertIn('Malcaide', jugadores, "El jugador 2 no se encuentra disponible.")
+        self.assertIn('Rekkles', jugadores, "El jugador 3 no se encuentra disponible.")
 
 
     def test5PostJugadores(self):
@@ -74,15 +77,15 @@ class TestModel(unittest.TestCase):
         self.assertEqual(respuesta.headers['content-type'], 'application/json', "Tipo MIME de la cabecera no es JSON.")
         contenido = obtenerContenidoPaquete(respuesta)
         self.assertEqual(len(contenido.keys()), 4, "Número de jugadores debería de ser 4 después de haber realizado un POST.")
-        self.assertEqual(contenido['jugador4']['Edad'], 15, "Parece que el nuevo jugador no ha sido creado correctamente.")
+        self.assertEqual(contenido['EjemploPost']['Edad'], 15, "Parece que el nuevo jugador no ha sido creado correctamente.")
 
     def test6GetJugador(self):
 
-        respuesta = self.app.get('/jugadores/jugador1')
+        respuesta = self.app.get('/jugadores/Hapneck')
         self.assertEqual(respuesta.status_code, 200, "El recurso de jugador1 no se encuentra disponible." )
         self.assertEqual(respuesta.headers['content-type'], 'application/json', "Tipo MIME de la cabecera no es JSON.")
         contenido = obtenerContenidoPaquete(respuesta)
-        self.assertEqual(contenido['jugador1']['Nick'],"Hapneck","El nick del jugador1 no es Hapneck.")
+        self.assertEqual(contenido['Hapneck']['Nick'],"Hapneck","El nick del jugador1 no es Hapneck.")
 
     def test7DeleteJugador(self):
 
@@ -92,13 +95,13 @@ class TestModel(unittest.TestCase):
         contenido = obtenerContenidoPaquete(respuesta)
         self.assertEqual(len(contenido.keys()), 4, "Debe haber 4 jugadores en este punto.")
 
-        respuesta = self.app.get('/jugadores/jugador4')
+        respuesta = self.app.get('/jugadores/EjemploPost')
         self.assertEqual(respuesta.status_code, 200, "El recurso de jugadores no se encuentra disponible.")
         self.assertEqual(respuesta.headers['content-type'], 'application/json', "Tipo MIME de la cabecera no es JSON.")
         contenido = obtenerContenidoPaquete(respuesta)
-        self.assertEqual(contenido['jugador4']['Nick'],"EjemploPost", "El cuarto jugador no es el que se esperaba")
+        self.assertEqual(contenido['EjemploPost']['Nick'],"EjemploPost", "El cuarto jugador no es el que se esperaba")
 
-        respuesta = self.app.delete('/jugadores/jugador4')
+        respuesta = self.app.delete('/jugadores/EjemploPost')
         self.assertEqual(respuesta.status_code, 204, "Ha habido algún error en el borrado del jugador4.")
         self.assertEqual(respuesta.headers['content-type'], 'application/json', "Tipo MIME de la cabecera no es JSON.")
 
@@ -108,7 +111,7 @@ class TestModel(unittest.TestCase):
         contenido = obtenerContenidoPaquete(respuesta)
         self.assertEqual(len(contenido.keys()), 3, "Número de jugadores debería encontrarse en 3.")
 
-        respuesta = self.app.get('/jugadores/jugador4')
+        respuesta = self.app.get('/jugadores/EjemploPost')
         self.assertEqual(respuesta.status_code, 404, "El recurso jugador4 no debería poder encontrarse.")
         self.assertEqual(respuesta.headers['content-type'], 'application/json', "Tipo MIME de la cabecera no es JSON.")
 
@@ -118,7 +121,7 @@ class TestModel(unittest.TestCase):
 
     def test8PutJugador(self):
 
-        respuesta = self.app.put("/jugadores/jugador4",data=Jugador("EjemploPut", "Alberto", "Soriano Martinez", 15, ["juego1", "juego2", "juego3"], True).__dict__())
+        respuesta = self.app.put("/jugadores/EjemploPut",data=Jugador("EjemploPut", "Alberto", "Soriano Martinez", 15, ["juego1", "juego2", "juego3"], True).__dict__())
         self.assertEqual(respuesta.status_code, 200, "El recurso no se ha puesto correctamente en el recurso /jugadores/jugador4.")
         self.assertEqual(respuesta.headers['content-type'], 'application/json', "Tipo MIME de la cabecera no es JSON.")
         contenido = obtenerContenidoPaquete(respuesta)
@@ -130,17 +133,16 @@ class TestModel(unittest.TestCase):
         contenido = obtenerContenidoPaquete(respuesta)
         self.assertEqual(len(contenido.keys()), 4, "Debe haber 4 jugadores en este punto.")
 
-        respuesta = self.app.put("/jugadores/jugador2", data=Jugador("EjemploPut2", "Alberto", "Soriano Martinez", 15, ["juego1", "juego2", "juego3"], True).__dict__())
+        respuesta = self.app.put("/jugadores/Malcaide", data=Jugador("Malcaide", "Alberto", "Soriano Martinez", 15, ["juego1", "juego2", "juego3"], True).__dict__())
         self.assertEqual(respuesta.status_code, 200,"El recurso no se ha puesto correctamente en el recurso /jugadores/jugador2.")
         self.assertEqual(respuesta.headers['content-type'], 'application/json', "Tipo MIME de la cabecera no es JSON.")
         contenido = obtenerContenidoPaquete(respuesta)
-        self.assertEqual(contenido['Nick'], "EjemploPut2", "Parece que no se ha realizado el put correctamente.")
+        self.assertEqual(contenido['Nombre'], "Alberto", "Parece que no se ha realizado el put correctamente.")
+        self.assertEqual(contenido['Edad'], 15, "Parece que no se ha realizado el put correctamente.")
 
-        respuesta = self.app.get('/jugadores/jugador2')
-        self.assertEqual(respuesta.status_code, 200, "El recurso de jugadores no se encuentra disponible.")
-        self.assertEqual(respuesta.headers['content-type'], 'application/json', "Tipo MIME de la cabecera no es JSON.")
-        contenido = obtenerContenidoPaquete(respuesta)
-        self.assertEqual(contenido['jugador2']['Nick'], "EjemploPut2", "El segundo jugador no es el que se esperaba")
+        # Dejamos el estado de la base de datos igual que antes de comenzar los tests.
+        self.app.delete("/jugadores/EjemploPut")
+        self.app.put("/jugadores/Malcaide", data =Jugador("Malcaide","Alfonso","Barragan Lara",22,["Counter Strike"],True).__dict__())
 
 
 if __name__ == '__main__':

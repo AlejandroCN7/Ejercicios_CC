@@ -3,6 +3,7 @@ from flask_restful import Resource, Api, abort, reqparse
 from model import Jugador
 from mongoDB import BaseDatos
 import pymongo
+import json
 
 import os
 
@@ -64,8 +65,10 @@ class JugadorIndividual(Resource):
         args = parser.parse_args()
         jugador = Jugador(args['Nick'], args['Nombre'], args['Apellidos'], args['Edad'],
                           args['Videojuegos'], args['Competitivo'])
-        mongo.insertJugador(jugador)
-        return mongo.getJugador(jugador[ruta])
+        exito = mongo.insertJugador(jugador)
+        if(not(exito)):
+            mongo.updateJugador(args['Nick'],jugador.__dict__())
+        return mongo.getJugador(ruta)
 
     def delete(self,ruta):
         mongo.removeJugador(ruta)
@@ -80,7 +83,7 @@ class Jugadores(Resource):
         args = parser.parse_args()
         jugador = Jugador(args['Nick'], args['Nombre'], args['Apellidos'], args['Edad'],
                           args['Videojuegos'], args['Competitivo'])
-        ruta = jugador['Nick']
+        ruta = args['Nick']
         mongo.insertJugador(jugador)
         return mongo.getJugador(ruta),201
 
