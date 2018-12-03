@@ -52,6 +52,7 @@
         blockinfile:
           create: yes
           path: /etc/rc.local
+          marker: null
           block: |
             #!/bin/sh -e
             #
@@ -74,3 +75,15 @@
           path: /etc/rc.local
           insertbefore: 'exit 0'
           line: "sudo iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 5000"
+
+      - name: Dando permisos
+        become: true
+        raw: chmod +x /etc/rc.local
+
+      - name: systemctl enable rc-local
+        become: true
+        raw: systemctl enable rc-local
+
+      - name: systemctl start rc-local.service
+        become: true
+        raw: systemctl start rc-local.service
