@@ -9,6 +9,9 @@ import os
 app = Flask("hito4")
 api = Api(app)
 
+#Para el sistema de logs
+logging.basicConfig(filename='app.log', filemode='a',format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG,  datefmt='%d-%b-%y %H:%M:%S')
+
 # Esto ser?a con flask sin el microframework de RestFul
 #@app.route("/")
 
@@ -48,8 +51,6 @@ def abortar_ruta_inexistente(ruta):
 
 class Principal(Resource):
     def get(self):
-        logging.basicConfig(filename='app.log', filemode='a',
-                            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
         return {'status':'OK'}
 
 class JugadorIndividual(Resource):
