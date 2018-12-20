@@ -17,6 +17,7 @@ az vm create \
   --image UbuntuLTS \
   --admin-username alejandro \
   --generate-ssh-keys \
+  --size Standard_B1s \
   --public-ip-address myPublicIpAddress \
   --public-ip-address-allocation static
 # az vm image list --> Con esto se puede consultar las imágenes disponibles
@@ -35,4 +36,4 @@ IP=`echo ${IP/\"/}`
 IP=`echo ${IP/\"/}`
 
 #https://stackoverflow.com/questions/44592141/ansible-ad-hoc-command-with-direct-host-specified-no-hosts-matched --> Este es el motivo por el que tuve que ponerle la coma al final de la IP.
-ansible-playbook -i "$IP," -b playbook.yml --user alejandro
+ansible-playbook -i "$IP," -e 'host_key_checking=False' -b playbook.yml --user alejandro -v
