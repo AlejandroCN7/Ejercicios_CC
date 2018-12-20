@@ -97,6 +97,6 @@ api.add_resource(JugadorIndividual,'/jugadores/<string:ruta>')
 
 if (__name__ == '__main__'):
     # Esto es para que pueda abrirse desde cualquier puerto y direccion(de esta forma en heroku no nos da error).
-    port = int(os.environ.get("PORT", 80))
+    port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port,debug=False)
     #app.run(debug=True)

@@ -2,12 +2,15 @@ import pymongo
 import logging
 
 class BaseDatos:
-    def __init__(self,direccion):
+    def __init__(self,direccion,prueba=False):
         logging.info("MONGO:Tratando de conectar con la base de datos.")
         MONGODB_URI = direccion
         client = pymongo.MongoClient(MONGODB_URI, connectTimeoutMS=40000)
         db = client.get_database()
-        self.jugadores = db.jugadores
+        if (prueba):
+            self.jugadores = db.jugadores
+        else:
+            self.jugadores = db.prueba
         logging.info("MONGO:Conexión completada con éxito.")
 
     def getJugador(self,jugador_nick):

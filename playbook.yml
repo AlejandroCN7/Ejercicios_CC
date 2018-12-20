@@ -22,7 +22,7 @@
           dest: ~/proyecto
 
       - name: Instalando dependencias del proyecto
-        become: true
+        become: false
         pip:
           requirements: ~/proyecto/requirements.txt
           executable: pip3
