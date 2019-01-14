@@ -1,0 +1,17 @@
+https://carlosazaustre.es/como-conectarte-remotamente-a-tu-base-de-datos-mongodb/ --> Como conectarnos a MV con mongo desde pymongo
+https://jarriagadeveloper.wordpress.com/2016/01/19/mongodb-comandos-basicos/ --> Operaciones básicas para crear colecciones en mongo
+
+1. Lo primero que tenemos que hacer es descargarnos el rol de Ansible para instalar mongo. Yo he usado este : https://github.com/Ilyes512/ansible-role-mongodb pero hay más por ahí.
+2. Hacemos git clone del repo del rol en <Raíz de nuestro repo>/roles.
+3. Si nos fijamos en como se llama al rol en un playbook (En el README.md del rol suele venir como llamarlo), deberemos llamar la carpeta clonada de la misma forma (en el caso de usar
+el mismo repo que estoy usando yo sería ilyes512.mongodb, si no hacemos esto no funciona).
+4. Después nos creamos un playbook en la raíz de nuestro proyecto igual que el de ejemplo del rol y listo.
+
+
+db.createUser(
+    {
+      user: "alejandro",
+      pwd: "passMONGO",
+      roles: [ { "role" : "readWrite", "db" : "myDatabase" }]
+    }
+);

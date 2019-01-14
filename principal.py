@@ -18,16 +18,8 @@ logging.basicConfig(filename='app.log', filemode='a',format='%(asctime)s - %(nam
 #def hello():
     #return "Hola Mundo !! :)
 
-j1 = Jugador("Hapneck","Alejandro","Campoy Nieves",22,["Fortnite","Hollow Knight","The Witcher"],True)
-j2 = Jugador("Malcaide","Alfonso","Barragan Lara",22,["Counter Strike"],True)
-j3 = Jugador("Rekkles","Juan","Martinez Casado",22,["Fortnite","League of Legends","Counter Strike"],False)
 
-mongo = BaseDatos("mongodb://Alejandro:alejandro13@ds026018.mlab.com:26018/jugadores")
-
-mongo.insertJugador(j1)
-mongo.insertJugador(j2)
-mongo.insertJugador(j3)
-
+mongo = BaseDatos("mongodb://alejandro:passMONGO@40.89.155.202:27017/MiBaseDatos")
 
 #recursos = {"jugador1":j1.__dict__(),
 #            "jugador2":j2.__dict__(),

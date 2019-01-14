@@ -1,0 +1,4 @@
+- hosts: Ubuntu16
+  sudo: true
+  roles:
+    - { role: ilyes512.mongodb, tag: ansidev.mongodb }

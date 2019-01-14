@@ -20,20 +20,36 @@ az vm create \
   --size Standard_B1s \
   --public-ip-address myPublicIpAddress \
   --public-ip-address-allocation static
+
+  # Creamos una segunda máquina para mongoDB
+  az vm create \
+    --resource-group myResourceGroup \
+    --name MongoDB \
+    --image UbuntuLTS \
+    --admin-username alejandro \
+    --generate-ssh-keys \
+    --size Standard_B1s \
+    --public-ip-address myPublicIpAddress2 \
+    --public-ip-address-allocation static
 # az vm image list --> Con esto se puede consultar las imágenes disponibles
 # https://docs.microsoft.com/es-es/azure/virtual-network/virtual-network-deploy-static-pip-arm-cli--> Así encontre el modo de crear una ip pública para especificarla en ansible
 
 # El siguiente paso sería abrir el puerto 80 para poder dar el servicio de mi aplicación desde ahí
 # https://docs.microsoft.com/es-es/azure/virtual-machines/linux/nsg-quickstart --> Aquí es donde encontré la forma de abrir el puerto desde azure CLI
 az vm open-port --resource-group myResourceGroup --name Ubuntu16 --port 80
+az vm open-port --resource-group myResourceGroup --name MongoDB --priority 899 --port 27017
 
 #El paso final sería realizar el provisionamiento de la máquina virtual con ansible, para ello debemos de especificarle la ip de nuestra máquina.
 #Encontré la opciones para realizar esto utilizando el comando: ansible-playbook --help
 #Una vez encontre el campo que me interesaba, vi que podía ponerlo en JSON y busque una herramienta para poder sacar el campo que me interesaba (jq para sacar la ip pública de la máquina)
-IP=`az network public-ip show   --resource-group myResourceGroup   --name myPublicIpAddress  --output json | jq ".ipAddress"`
+IPREST=`az network public-ip show   --resource-group myResourceGroup   --name myPublicIpAddress  --output json | jq ".ipAddress"`
+IPMONGO=`az network public-ip show   --resource-group myResourceGroup   --name myPublicIpAddress2  --output json | jq ".ipAddress"`
 # Tras mucho tiempo con errores, me di cuenta de que debía de quitarle las dobles comillas.
-IP=`echo ${IP/\"/}`
-IP=`echo ${IP/\"/}`
+IPREST=`echo ${IP/\"/}`
+IPREST=`echo ${IP/\"/}`
+IPMONGO=`echo ${IP/\"/}`
+IPMONGO=`echo ${IP/\"/}`
 
 #https://stackoverflow.com/questions/44592141/ansible-ad-hoc-command-with-direct-host-specified-no-hosts-matched --> Este es el motivo por el que tuve que ponerle la coma al final de la IP.
-ansible-playbook -i "$IP," -e 'host_key_checking=False' -b playbook.yml --user alejandro -v
+ansible-playbook -i "$IPREST," -e 'host_key_checking=False' -b playbook.yml --user alejandro -v
+ansible-playbook -i "$IPMONGO," -e 'host_key_checking=False' -b mongo.yml --user alejandro -v

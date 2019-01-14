@@ -3,4 +3,4 @@ Ubuntu16 ansible_ssh_port=22 ansible_ssh_private_key_file=~/.ssh/id_rsa
 
 [vagrantboxes:vars]
 ansible_ssh_user=alejandro
-ansible_ssh_host=40.89.156.39
+ansible_ssh_host=40.89.155.202

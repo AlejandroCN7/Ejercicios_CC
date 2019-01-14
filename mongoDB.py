@@ -1,12 +1,15 @@
-import pymongo
 import logging
+import pymongo
+from model import Jugador
+
+import os
 
 class BaseDatos:
     def __init__(self,direccion,prueba=False):
         logging.info("MONGO:Tratando de conectar con la base de datos.")
         MONGODB_URI = direccion
         client = pymongo.MongoClient(MONGODB_URI, connectTimeoutMS=40000)
-        db = client.get_database()
+        db = client["MiBaseDatos"]
         if (prueba):
             self.jugadores = db.jugadores
         else:
@@ -63,5 +66,14 @@ class BaseDatos:
 
     def getSize(self):
         return self.jugadores.count_documents({})
+
+if(__name__ == "__main__"):
+    print("mongodb://alejandro:" + os.environ.get('MONGOPASS') + "@40.89.155.202:27017/MiBaseDatos")
+    direccion = "mongodb://alejandro:" + os.environ.get('MONGOPASS') + "@40.89.155.202:27017/MiBaseDatos"
+    mongo = BaseDatos(direccion)
+    j1 = Jugador("Hapneck", "Alejandro", "Campoy Nieves", 22, ["Fortnite", "Hollow Knight", "The Witcher"], True)
+    print(mongo.insertJugador(j1))
+
+
 
 
