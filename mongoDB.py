@@ -10,7 +10,7 @@ class BaseDatos:
         MONGODB_URI = direccion
         client = pymongo.MongoClient(MONGODB_URI, connectTimeoutMS=40000)
         db = client["MiBaseDatos"]
-        if (prueba):
+        if (not prueba):
             self.jugadores = db.jugadores
         else:
             self.jugadores = db.prueba

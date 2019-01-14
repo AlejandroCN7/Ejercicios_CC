@@ -45,10 +45,10 @@ az vm open-port --resource-group myResourceGroup --name MongoDB --priority 899 -
 IPREST=`az network public-ip show   --resource-group myResourceGroup   --name myPublicIpAddress  --output json | jq ".ipAddress"`
 IPMONGO=`az network public-ip show   --resource-group myResourceGroup   --name myPublicIpAddress2  --output json | jq ".ipAddress"`
 # Tras mucho tiempo con errores, me di cuenta de que debía de quitarle las dobles comillas.
-IPREST=`echo ${IP/\"/}`
-IPREST=`echo ${IP/\"/}`
-IPMONGO=`echo ${IP/\"/}`
-IPMONGO=`echo ${IP/\"/}`
+IPREST=`echo ${IPREST/\"/}`
+IPREST=`echo ${IPREST/\"/}`
+IPMONGO=`echo ${IPMONGO/\"/}`
+IPMONGO=`echo ${IPMONGO/\"/}`
 
 #https://stackoverflow.com/questions/44592141/ansible-ad-hoc-command-with-direct-host-specified-no-hosts-matched --> Este es el motivo por el que tuve que ponerle la coma al final de la IP.
 ansible-playbook -i "$IPREST," -e 'host_key_checking=False' -b playbook.yml --user alejandro -v
