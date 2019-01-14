@@ -1,8 +1,10 @@
 from model import Jugador
 from mongoDB import BaseDatos
 
+import os
+
 if(__name__ == "__main__"):
-    direccion = "mongodb://alejandro:passMONGO@40.89.155.202:27017/MiBaseDatos"
+    direccion = "mongodb://alejandro:" + os.environ.get('MONGOPASS') + "@40.89.155.202:27017/MiBaseDatos"
     mongo = BaseDatos(direccion)
 
     j1 = Jugador("Hapneck", "Alejandro", "Campoy Nieves", 22, ["Fortnite", "Hollow Knight", "The Witcher"], True)
