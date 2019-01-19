@@ -45,7 +45,7 @@
   lineinfile:
     dest: /etc/mongod.conf
     regexp: "^\\s*bindIp.*"
-    line: "  bindIp: 10.0.0.4"
+    line: "  bindIp: [10.0.0.4,127.0.0.1]"
     state: present
   when: mongodb_allow_remote is defined and mongodb_allow_remote|bool
   notify: restart mongodb
