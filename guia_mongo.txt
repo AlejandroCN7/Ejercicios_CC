@@ -12,6 +12,6 @@ db.createUser(
     {
       user: "alejandro",
       pwd: "passMONGO",
-      roles: [ { "role" : "readWrite", "db" : "myDatabase" }]
+      roles: [ { "role" : "readWrite", "db" : "MiBaseDatos" }]
     }
 );

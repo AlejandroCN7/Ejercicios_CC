@@ -1,5 +1,5 @@
 ---
-  - hosts: all
+  - hosts: Ubuntu16
     become: true
     pre_tasks:
       - name: Instala git

@@ -67,12 +67,6 @@ class BaseDatos:
     def getSize(self):
         return self.jugadores.count_documents({})
 
-if(__name__ == "__main__"):
-    print("mongodb://alejandro:" + os.environ.get('MONGOPASS') + "@40.89.155.202:27017/MiBaseDatos")
-    direccion = "mongodb://alejandro:" + os.environ.get('MONGOPASS') + "@40.89.155.202:27017/MiBaseDatos"
-    mongo = BaseDatos(direccion)
-    j1 = Jugador("Hapneck", "Alejandro", "Campoy Nieves", 22, ["Fortnite", "Hollow Knight", "The Witcher"], True)
-    print(mongo.insertJugador(j1))
 
 
 
