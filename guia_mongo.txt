@@ -1,5 +1,7 @@
 https://carlosazaustre.es/como-conectarte-remotamente-a-tu-base-de-datos-mongodb/ --> Como conectarnos a MV con mongo desde pymongo
 https://jarriagadeveloper.wordpress.com/2016/01/19/mongodb-comandos-basicos/ --> Operaciones básicas para crear colecciones en mongo
+https://github.com/Azure/vagrant-azure --> Para configurar azure desde vagrant
+https://blog.scottlowe.org/2017/12/11/using-vagrant-with-azure/ --> Otra fuente que me puede ser de ayuda
 
 1. Lo primero que tenemos que hacer es descargarnos el rol de Ansible para instalar mongo. Yo he usado este : https://github.com/Ilyes512/ansible-role-mongodb pero hay más por ahí.
 2. Hacemos git clone del repo del rol en <Raíz de nuestro repo>/roles.
@@ -15,3 +17,12 @@ db.createUser(
       roles: [ { "role" : "readWrite", "db" : "MiBaseDatos" }]
     }
 );
+
+
+{
+  "appId": "dc300428-8421-4a3f-9c67-16eb51f8b265",
+  "displayName": "azure-cli-2019-01-19-17-47-32",
+  "name": "http://azure-cli-2019-01-19-17-47-32",
+  "password": "9715ecc1-d26d-4d29-8d6f-445d71e7f38c",
+  "tenant": "49b4fe71-6db3-4232-a29f-ed13961e381b"
+}

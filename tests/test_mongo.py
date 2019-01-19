@@ -9,7 +9,7 @@ import pymongo
 class TestModel(unittest.TestCase):
 
     def setUp(self):
-        self.mongo = BaseDatos("mongodb://20.188.35.70:27017/MiBaseDatos")
+        self.mongo = BaseDatos("mongodb://20.188.35.70:27017/MiBaseDatos",True)
         self.mongo.removeJugadores()
         self.prueba = Jugador("Ejemplo", "Alberto", "Soriano Martinez", 150, ["juego1", "juego2", "juego3"], True)
 
@@ -56,14 +56,6 @@ class TestModel(unittest.TestCase):
         self.assertEqual(self.mongo.getJugador("Ejemplo")['Nombre'],'Acierto',"El Nombre de la entrada de ejemplo no se ha actualizado correctamente")
         self.mongo.removeJugadores()
 
-        ## En el ultimo test dejo la base de datos en su estado inicial
-        self.mongo.removeJugadores()
-        j1 = Jugador("Hapneck", "Alejandro", "Campoy Nieves", 22, ["Fortnite", "Hollow Knight", "The Witcher"], True)
-        j2 = Jugador("Malcaide", "Alfonso", "Barragan Lara", 22, ["Counter Strike"], True)
-        j3 = Jugador("Rekkles", "Juan", "Martinez Casado", 22, ["Fortnite", "League of Legends", "Counter Strike"],False)
-        self.mongo.insertJugador(j1)
-        self.mongo.insertJugador(j2)
-        self.mongo.insertJugador(j3)
 
 if __name__ == '__main__':
     unittest.main()

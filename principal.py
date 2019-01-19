@@ -19,7 +19,7 @@ logging.basicConfig(filename='app.log', filemode='a',format='%(asctime)s - %(nam
     #return "Hola Mundo !! :)
 
 
-mongo = BaseDatos("mongodb://20.188.35.70:27017/MiBaseDatos")
+mongo = BaseDatos("mongodb://10.0.0.5:27017/MiBaseDatos")
 
 #recursos = {"jugador1":j1.__dict__(),
 #            "jugador2":j2.__dict__(),
@@ -89,6 +89,6 @@ api.add_resource(JugadorIndividual,'/jugadores/<string:ruta>')
 
 if (__name__ == '__main__'):
     # Esto es para que pueda abrirse desde cualquier puerto y direccion(de esta forma en heroku no nos da error).
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 80))
     app.run(host="0.0.0.0", port=port,debug=False)
     #app.run(debug=True)
