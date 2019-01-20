@@ -29,7 +29,6 @@
 
       - name: Pasando contraseña oculta de la base de datos
         become: false
-        become: false
         lineinfile:
             path: ~/.bashrc
             line: export MONGOPASS={{ lookup('env','MONGOPASS') }}
