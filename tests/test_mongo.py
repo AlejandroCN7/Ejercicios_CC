@@ -9,7 +9,7 @@ import pymongo
 class TestModel(unittest.TestCase):
 
     def setUp(self):
-        self.mongo = BaseDatos("mongodb://20.188.35.70:27017/MiBaseDatos",True)
+        self.mongo = BaseDatos("mongodb://127.0.0.1:27017/MiBaseDatos",True)
         self.mongo.removeJugadores()
         self.prueba = Jugador("Ejemplo", "Alberto", "Soriano Martinez", 150, ["juego1", "juego2", "juego3"], True)
 
