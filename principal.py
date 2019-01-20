@@ -19,7 +19,7 @@ logging.basicConfig(filename='app.log', filemode='a',format='%(asctime)s - %(nam
     #return "Hola Mundo !! :)
 
 if('TRAVIS' in os.environ):
-    mongo = BaseDatos("mongodb://127.0.0.1:27017/MiBaseDatos", False)
+    mongo = BaseDatos("mongodb://127.0.0.1:27017/MiBaseDatos", True)
 else:
     mongo = BaseDatos("mongodb://10.0.0.5:27017/MiBaseDatos",False)
 
