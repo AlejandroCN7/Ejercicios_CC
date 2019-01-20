@@ -6,7 +6,7 @@ import logging
 
 import os
 
-app = Flask("hito4")
+app = Flask("hito5")
 api = Api(app)
 
 #Para el sistema de logs
@@ -18,8 +18,10 @@ logging.basicConfig(filename='app.log', filemode='a',format='%(asctime)s - %(nam
 #def hello():
     #return "Hola Mundo !! :)
 
-
-mongo = BaseDatos("mongodb://10.0.0.5:27017/MiBaseDatos",False)
+if('TRAVIS' in os.environ):
+    mongo = BaseDatos("mongodb://127.0.0.1:27017/MiBaseDatos", False)
+else:
+    mongo = BaseDatos("mongodb://10.0.0.5:27017/MiBaseDatos",False)
 
 #recursos = {"jugador1":j1.__dict__(),
 #            "jugador2":j2.__dict__(),
