@@ -19,7 +19,7 @@ logging.basicConfig(filename='app.log', filemode='a',format='%(asctime)s - %(nam
     #return "Hola Mundo !! :)
 
 
-mongo = BaseDatos("mongodb://10.0.0.5:27017/MiBaseDatos")
+mongo = BaseDatos("mongodb://10.0.0.5:27017/MiBaseDatos",False)
 
 #recursos = {"jugador1":j1.__dict__(),
 #            "jugador2":j2.__dict__(),
