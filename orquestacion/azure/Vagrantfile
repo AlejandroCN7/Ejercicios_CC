@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
         az.location = 'francecentral'                                # Región del grupo de recursos
         az.admin_username = 'alejandro'                              # Usuario administrador
         az.virtual_network_name = 'redPrivada'                       # Definimos red privada virtual
-        tcp_endpoints = 80                                           # Abrimos puerto 80 para que escuche
+        tcp_endpoints = [80,27017]                                           # Abrimos puerto 80 para que escuche
       end # Rest.vm.provider 'azure'
 
       #Es importante añadir la provisión de ansible que tenemos preparada
@@ -69,7 +69,7 @@ Vagrant.configure("2") do |config|
       az.location = 'francecentral'                                # Región del grupo de recursos
       az.admin_username = 'alejandro'                              # Usuario administrador
       az.virtual_network_name = 'redPrivada'                       # Definimos la misma red privada virtual
-      tcp_endpoints = 27017                                        # Abrimos puerto para que escuche Mongo
+      tcp_endpoints = [80,27017]                                         # Abrimos puerto para que escuche Mongo
     end # Mongo.vm.provider 'azure'
 
     #Es importante añadir la provisión de ansible que tenemos preparada
